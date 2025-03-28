@@ -527,7 +527,7 @@ Transform:
   m_GameObject: {fileID: 720017525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.27, y: 1, z: -1.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -562,16 +562,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":-72.0,"y":-475.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_action":{"meshRenderer":1,"flashColour":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"chargeTime":3.0,"chargeSpeed":{"_name":"nibblerSpeed","_targetVariableID":"3ab8a3cd-eeea-45ca-a30b-de296a6ec07a"},"$type":"NodeCanvas.Tasks.Actions.FlashAT"},"_position":{"x":-190.9072,"y":-361.7784},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_action":{"meshRenderer":1,"baseColour":{"r":0.282353,"g":0.8196079,"b":0.7921569,"a":1.0},"dashSpeed":{"_name":"nibblerSpeed","_targetVariableID":"3ab8a3cd-eeea-45ca-a30b-de296a6ec07a"},"chargeTime":1.5,"$type":"NodeCanvas.Tasks.Actions.DashAT"},"_position":{"x":-15.0,"y":-361.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"2"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"nibblerSpeed":{"_value":5.0,"_name":"nibblerSpeed","_id":"3ab8a3cd-eeea-45ca-a30b-de296a6ec07a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"dynamic":true,"_position":{"x":-709.0,"y":-516.0},"$type":"NodeCanvas.BehaviourTrees.Parallel","$id":"0"},{"_action":{"velocity":{"_name":"Velocity","_targetVariableID":"a74a4dee-3ce7-421d-8cca-3f472a58c498"},"acceleration":{"_name":"Acceleration","_targetVariableID":"b36742cb-00d3-42b4-800d-2eaee60a7908"},"maxGroundSpeed":{"_name":"MaxNibblerSpeed","_targetVariableID":"499914b6-23a2-4c3e-8f97-5b90d7610120"},"maxPauseTimer":1.0,"$type":"NodeCanvas.Tasks.Actions.NavigateAT"},"_position":{"x":-825.0,"y":-382.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_action":{"acceleration":{"_name":"Acceleration","_targetVariableID":"b36742cb-00d3-42b4-800d-2eaee60a7908"},"target":{"_name":"Target","_targetVariableID":"29e4926c-bc9b-4a5b-8271-f161e341272a"},"stoppingDistance":4.0,"steeringAcceleration":4.0,"$type":"NodeCanvas.Tasks.Actions.NibblerSteeringAT"},"_position":{"x":-685.0,"y":-394.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"2"},{"_position":{"x":-680.0,"y":-780.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"3"},{"_position":{"x":-710.0,"y":-682.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":-392.0,"y":-626.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"},{"_action":{"meshRenderer":1,"flashColour":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"chargeTime":3.0,"chargeSpeed":{"_name":"MaxNibblerSpeed","_targetVariableID":"499914b6-23a2-4c3e-8f97-5b90d7610120"},"$type":"NodeCanvas.Tasks.Actions.FlashAT"},"_position":{"x":-510.9072,"y":-512.7784},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"},{"_action":{"meshRenderer":1,"baseColour":{"r":0.282353,"g":0.8196079,"b":0.7921569,"a":1.0},"dashSpeed":{"_name":"MaxNibblerSpeed","_targetVariableID":"499914b6-23a2-4c3e-8f97-5b90d7610120"},"chargeTime":1.5,"$type":"NodeCanvas.Tasks.Actions.DashAT"},"_position":{"x":-335.0,"y":-512.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"7"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"7"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Acceleration":{"_name":"Acceleration","_id":"b36742cb-00d3-42b4-800d-2eaee60a7908","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Target":{"_value":2,"_name":"Target","_id":"29e4926c-bc9b-4a5b-8271-f161e341272a","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Velocity":{"_name":"Velocity","_id":"a74a4dee-3ce7-421d-8cca-3f472a58c498","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Vector3,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"MaxNibblerSpeed":{"_value":3.0,"_name":"MaxNibblerSpeed","_id":"499914b6-23a2-4c3e-8f97-5b90d7610120","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
   - {fileID: 720017527}
+  - {fileID: 1358855060}
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: 602, y: 703}
+    _translation: {x: 1073, y: 878}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -745,7 +749,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 74
+  field of view: 63.6
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -771,13 +775,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721936717}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40586746, y: 0, z: 0, w: 0.91393197}
-  m_LocalPosition: {x: 0, y: 4.254, z: -4.15}
+  m_LocalRotation: {x: 0.09845931, y: 0.33782315, z: -0.03556009, w: 0.93536985}
+  m_LocalPosition: {x: -2.489, y: 4.161, z: -11.882}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 47.891, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.018, y: 39.716, z: 0}
 --- !u!1 &1993728451
 GameObject:
   m_ObjectHideFlags: 0
