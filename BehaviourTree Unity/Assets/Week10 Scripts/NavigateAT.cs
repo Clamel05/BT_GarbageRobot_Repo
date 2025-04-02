@@ -1,6 +1,7 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace NodeCanvas.Tasks.Actions
 {
@@ -11,6 +12,10 @@ namespace NodeCanvas.Tasks.Actions
         public BBParameter<Vector3> velocity;
         public BBParameter<Vector3> acceleration;
         public BBParameter<float> maxGroundSpeed;
+
+        public BBParameter<Transform> target;
+        public BBParameter<float> stoppingDistance;
+
 
         private bool pause = false;
         public float maxPauseTimer;
@@ -61,7 +66,14 @@ namespace NodeCanvas.Tasks.Actions
 
                 acceleration.value = Vector3.zero;
             }
-            
+
+            float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
+            if (distanceToTarget < stoppingDistance.value)
+            {
+                EndAction(true);
+                return;
+            }
+
         }
 
         //Called when the task is disabled.

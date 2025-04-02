@@ -9,7 +9,7 @@ namespace NodeCanvas.Tasks.Actions {
 
         public BBParameter<Vector3> acceleration;
         public BBParameter<Transform> target;
-        public float stoppingDistance;
+        public BBParameter<float> stoppingDistance;
         public float steeringAcceleration;
 
         //Use for initialization. This is called only once in the lifetime of the task.
@@ -25,7 +25,7 @@ namespace NodeCanvas.Tasks.Actions {
         protected override void OnExecute()
         {
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
-            if (distanceToTarget < stoppingDistance)
+            if (distanceToTarget < stoppingDistance.value)
             {
                 EndAction(true);
                 return;
