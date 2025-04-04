@@ -1,7 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace NodeCanvas.Tasks.Actions
 {
@@ -15,7 +14,6 @@ namespace NodeCanvas.Tasks.Actions
 
         public BBParameter<Transform> target;
         public BBParameter<float> stoppingDistance;
-
 
 
         private bool pause = false;
@@ -80,7 +78,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called when the task is disabled.
         protected override void OnStop()
         {
-
+            
         }
 
         //Called when the task is paused.

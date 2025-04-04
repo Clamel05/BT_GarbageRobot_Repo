@@ -1,19 +1,12 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class DashAT : ActionTask {
-
-        public MeshRenderer meshRenderer;
-        public Color baseColour;
-
-        public BBParameter <float> dashSpeed;
-
-        public float chargeTime;
-        private float timer = 0;
 
         
 
@@ -31,8 +24,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            meshRenderer.material.color = baseColour;
-            dashSpeed.value = 20;
+            
             
         }
 
@@ -50,25 +42,19 @@ namespace NodeCanvas.Tasks.Actions {
                 {
                     bestTarget = detectedTrash.transform;
                     bestValue = distanceToThief;
+
                 }
 
             }
             detectionTarget.value = bestTarget;
-
-
-
-
-            timer += Time.deltaTime;
-            if (timer >= chargeTime)
-            {
-                EndAction(true);
-            }
+            EndAction(true);
+ 
         }
 
-		//Called when the task is disabled.
+        //Called when the task is disabled.
 		protected override void OnStop() {
-            
-		}
+            Object.Destroy(detectionTarget.value);
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {
