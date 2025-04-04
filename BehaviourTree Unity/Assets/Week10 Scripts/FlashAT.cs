@@ -14,12 +14,11 @@ namespace NodeCanvas.Tasks.Actions {
         public float chargeTime;
 		private float timer = 0;
 
-		private float flashBeatTime;
-		public float numberOfFlashes;
-		private float repeatingFlashes;
+        public float maxFlashTimer;
+        private float flashTimer;
 
 		private bool turnBlue;
-		private bool turnWhite;
+		private bool turnWhite = false;
 
 		public BBParameter <float> chargeSpeed;
 
@@ -41,18 +40,33 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			if(turnWhite == true)
-			{
-				meshRenderer.material.color = flashColour;
-			}
-			else
-				meshRenderer.material.color = baseColour;
-               
 			
-			if (turnWhite == false)
-				turnWhite = true;
-			else
-				turnWhite = true;
+
+			/*flashTimer = maxFlashTimer;
+			flashTimer -= Time.deltaTime;
+			if(flashTimer == 0 )
+			{
+				if (turnWhite == false)
+                    turnWhite = true;
+                else
+                    turnWhite = false;
+            }*/
+
+            if (turnWhite == false)
+                turnWhite = true;
+            else
+                turnWhite = false;
+
+            if (turnWhite == true)
+            {
+                meshRenderer.material.color = flashColour;
+            }
+            else
+                meshRenderer.material.color = baseColour;
+
+
+
+
 
 
             timer += Time.deltaTime;
@@ -65,8 +79,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-			
-		}
+            meshRenderer.material.color = baseColour;
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {

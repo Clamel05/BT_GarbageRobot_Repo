@@ -11,10 +11,11 @@ namespace NodeCanvas.Tasks.Actions
 
         public BBParameter<Vector3> velocity;
         public BBParameter<Vector3> acceleration;
-        public BBParameter<float> maxGroundSpeed;
+        public float maxGroundSpeed;
 
         public BBParameter<Transform> target;
         public BBParameter<float> stoppingDistance;
+
 
 
         private bool pause = false;
@@ -33,7 +34,7 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-
+            maxGroundSpeed = 20;
         }
 
         //Called once per frame while the action is active.
@@ -56,10 +57,10 @@ namespace NodeCanvas.Tasks.Actions
             {
                 velocity.value += acceleration.value;
                 float groundSpeed = Mathf.Sqrt(velocity.value.x * velocity.value.x + velocity.value.z * velocity.value.z);
-                if (maxGroundSpeed.value < groundSpeed)
+                if (maxGroundSpeed < groundSpeed)
                 {
-                    float cappedX = velocity.value.x / groundSpeed * maxGroundSpeed.value;
-                    float cappedZ = velocity.value.z / groundSpeed * maxGroundSpeed.value;
+                    float cappedX = velocity.value.x / groundSpeed * maxGroundSpeed;
+                    float cappedZ = velocity.value.z / groundSpeed * maxGroundSpeed;
                     velocity = new Vector3(cappedX, velocity.value.y, cappedZ);
                 }
                 agent.transform.position += velocity.value * Time.deltaTime;
