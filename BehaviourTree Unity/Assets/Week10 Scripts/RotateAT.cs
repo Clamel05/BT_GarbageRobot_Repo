@@ -11,6 +11,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public float rotateSpeed = 1.0f;
 
+		private Quaternion lookRotation;
+		private Vector3 direction;
+
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -26,7 +29,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			Vector3 targetDirection = target.value.position - agent.transform.position;
+			/*Vector3 targetDirection = target.value.position - agent.transform.position;
 
 			float singlestep = rotateSpeed * Time.deltaTime;
 
@@ -34,7 +37,18 @@ namespace NodeCanvas.Tasks.Actions {
 
 			Debug.DrawRay(agent.transform.position, newDirection, Color.red);
 
-			agent.transform.rotation = Quaternion.LookRotation(newDirection);
+			agent.transform.rotation = Quaternion.LookRotation(newDirection);*/
+
+			direction = (target.value.position - agent.transform.position).normalized;
+
+			lookRotation = Quaternion.LookRotation(direction);
+
+			agent.transform.rotation = Quaternion.Slerp(agent.transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+
+
+
+
+
 		}
 
 		//Called when the task is disabled.
