@@ -5,9 +5,12 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class WaitTimeAT : ActionTask {
+	public class InstantiateLaserAT : ActionTask {
 
-		public float maxTimer;
+		public GameObject laser;
+
+		//public BBParameter<Transform> target;
+
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -19,16 +22,15 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+
+			MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
 			
+			EndAction(true);
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			maxTimer -= Time.deltaTime;
-			if(maxTimer <= 0)
-			{
-				EndAction(true);
-			}
+			
 		}
 
 		//Called when the task is disabled.

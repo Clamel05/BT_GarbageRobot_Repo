@@ -7,22 +7,21 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class RotateAT : ActionTask {
 
-		public BBParameter<Transform> target;
+		public BBParameter<Transform> targetRobot;
 
 		public LayerMask layerMask;
 
-		public float rotateSpeed = 1.0f;
-
-		private Quaternion lookRotation;
-		private Vector3 direction;
+		public float rotateSpeed;
 
 		public float raycastRange;
 
-		
+        public GameObject laser;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -35,21 +34,28 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			Vector3 targetDirection = target.value.position - agent.transform.position;
+			Vector3 targetDirection = targetRobot.value.position - agent.transform.position;
 
-			float singlestep = rotateSpeed * Time.deltaTime;
+			float rotation = rotateSpeed * Time.deltaTime;
 
-			Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, singlestep, 0.0f);
 
+            float distanceToTarget = Vector3.Distance(agent.transform.position, targetRobot.value.position);
+            Vector3 newDirection = Vector3.RotateTowards(agent.transform.forward, targetDirection, rotation, distanceToTarget);
 			agent.transform.rotation = Quaternion.LookRotation(newDirection);
 
+			
 			Debug.DrawRay(agent.transform.position, newDirection, Color.red);
 
+			
 			Vector3 forward = agent.transform.TransformDirection(Vector3.forward);
 
             if (Physics.Raycast(agent.transform.position, forward, raycastRange, layerMask))
 			{
 				Debug.Log("hit");
+
+				//MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
+
+				EndAction(true);
 			}
 
 
