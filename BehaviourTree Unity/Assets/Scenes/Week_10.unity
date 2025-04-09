@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 134278311}
   - component: {fileID: 134278310}
   m_Layer: 0
-  m_Name: Shooter Spawn Blocks
+  m_Name: Shooter SpawnBlock_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,11 +315,11 @@ Transform:
   m_GameObject: {fileID: 134278309}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.8500004, y: 0, z: 4.2033334}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1313528129}
+  m_Father: {fileID: 1863835429}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160769971
 GameObject:
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 343982019}
   - component: {fileID: 343982018}
   m_Layer: 0
-  m_Name: Shooter Spawn Blocks
+  m_Name: Shooter SpawnBlock_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,11 +525,11 @@ Transform:
   m_GameObject: {fileID: 343982017}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.9, y: 0, z: 4.2033334}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1313528129}
+  m_Father: {fileID: 1524806514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407587754
 GameObject:
@@ -818,7 +818,6 @@ Transform:
   m_Children:
   - {fileID: 160769975}
   - {fileID: 407587758}
-  - {fileID: 1313528129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &686899377
@@ -1376,7 +1375,7 @@ Transform:
   m_GameObject: {fileID: 1181511118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 14.81, y: 1.24, z: 0}
+  m_LocalPosition: {x: 14, y: 1.24, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1412,23 +1411,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":664.0,"y":274.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"0"},{"_action":{"targetRobot":{"_value":1},"layerMask":{"value":128},"rotateSpeed":0.2,"raycastRange":50.0,"laser":2,"$type":"NodeCanvas.Tasks.Actions.RotateAT"},"_position":{"x":475.0,"y":431.0},"_comment":"Rotate
-    to Player w Raycast","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_action":{"executionMode":1,"actions":[{"laser":2,"_isDisabled":true,"$type":"NodeCanvas.Tasks.Actions.InstantiateLaserAT"},{"maxTimer":50.0,"$type":"NodeCanvas.Tasks.Actions.WaitTimeAT"}],"$type":"NodeCanvas.Framework.ActionList"},"_position":{"x":661.0,"y":427.0},"_comment":"Instantiate
-    Laser Charge","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"2"},{"_action":{"$type":"NodeCanvas.Tasks.Actions.ShootLaserAT"},"_position":{"x":957.0,"y":421.0},"_comment":"Shoot
-    Laser","$type":"NodeCanvas.BehaviourTrees.ActionNode"},{"_action":{"maxTimer":3.0,"$type":"NodeCanvas.Tasks.Actions.WaitTimeAT"},"_position":{"x":810.0,"y":422.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode"},{"_position":{"x":432.0,"y":86.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"5"},{"_action":{"maxTimer":3.0,"$type":"NodeCanvas.Tasks.Actions.WaitTimeAT"},"_position":{"x":274.0,"y":424.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Robot":{"_value":1,"_name":"Robot","_id":"bf8e9f59-0622-457e-b8b7-109afdbb7afb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Shooter":{"_value":3,"_name":"Shooter","_id":"bb690f2b-52c5-4244-a6eb-6a18972d7f04","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  _boundGraphSerialization: '{"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":432.0,"y":86.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"0"},{"_action":{"maxTimer":3.0,"$type":"NodeCanvas.Tasks.Actions.WaitTimeAT"},"_position":{"x":274.0,"y":425.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"1"},{"_position":{"x":611.6736,"y":272.6668},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"2"},{"_action":{"targetRobot":{"_value":1},"layerMask":{"value":128},"rotateSpeed":0.2,"raycastRange":50.0,"laser":2,"$type":"NodeCanvas.Tasks.Actions.RotateAT"},"_position":{"x":485.6653,"y":431.0},"_comment":"Rotate
+    to Player w Raycast","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"3"},{"_action":{"laser":2,"chargeTimer":1.5,"$type":"NodeCanvas.Tasks.Actions.InstantiateLaserAT"},"_position":{"x":607.6736,"y":428.3332},"_comment":"Instantiate
+    Laser Charge","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_action":{"laser":3,"shootTimer":3.0,"$type":"NodeCanvas.Tasks.Actions.ShootLaserAT"},"_position":{"x":778.6767,"y":431.0},"_comment":"Shoot
+    Laser","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"5"},{"_action":{"spawner01":4,"spawner02":5,"spawner03":6,"spawner04":7,"$type":"NodeCanvas.Tasks.Actions.ShooterSpawnAT"},"_position":{"x":1067.862,"y":281.297},"_comment":"New
+    Spawnpoint","$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"6"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"Robot":{"_value":1,"_name":"Robot","_id":"bf8e9f59-0622-457e-b8b7-109afdbb7afb","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Shooter":{"_value":8,"_name":"Shooter","_id":"bb690f2b-52c5-4244-a6eb-6a18972d7f04","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
   - {fileID: 417949685}
   - {fileID: 1654988163016694104, guid: 2bf43578cfa078c46915589bf2b1f650, type: 3}
+  - {fileID: 1654988163016694104, guid: 092ac0476715468498531516289ceab7, type: 3}
+  - {fileID: 1853014159}
+  - {fileID: 1863835428}
+  - {fileID: 1524806513}
+  - {fileID: 1488273117}
   - {fileID: 1181511122}
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: -74, y: -86}
-    _zoomFactor: 1
+    _translation: {x: -30, y: 59}
+    _zoomFactor: 0.75009716
   _firstActivation: 0
   _enableAction: 0
   _disableAction: 0
@@ -1576,7 +1581,7 @@ GameObject:
   - component: {fileID: 1313528127}
   - component: {fileID: 1313528126}
   m_Layer: 0
-  m_Name: Shooter Spawn Blocks
+  m_Name: Shooter SpawnBlock_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1662,14 +1667,11 @@ Transform:
   m_GameObject: {fileID: 1313528125}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.910893, y: 3.6860096, z: -13.832425}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2133969855}
-  - {fileID: 134278313}
-  - {fileID: 343982021}
-  m_Father: {fileID: 563341471}
+  m_Children: []
+  m_Father: {fileID: 1488273118}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358855056
 GameObject:
@@ -1776,6 +1778,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -43.017, z: 0}
+--- !u!1 &1488273117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488273118}
+  m_Layer: 0
+  m_Name: Shooter_Spawn_04
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1488273118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488273117}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.24, z: -14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1313528129}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1524806513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524806514}
+  m_Layer: 0
+  m_Name: Shooter_Spawn_03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524806514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524806513}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14, y: 1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 343982021}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721936717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1868,6 +1934,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 58.529, y: -90, z: 0}
+--- !u!1 &1853014159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853014160}
+  m_Layer: 0
+  m_Name: Shooter_Spawn_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1853014160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853014159}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.24, z: 14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2133969855}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1863835428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1863835429}
+  m_Layer: 0
+  m_Name: Shooter_Spawn_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1863835429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863835428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14, y: 1.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 134278313}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936487567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,7 +2221,7 @@ GameObject:
   - component: {fileID: 2133969853}
   - component: {fileID: 2133969852}
   m_Layer: 0
-  m_Name: Shooter Spawn Blocks
+  m_Name: Shooter SpawnBlock_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2177,11 +2307,11 @@ Transform:
   m_GameObject: {fileID: 2133969851}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8.543334}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.24, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1313528129}
+  m_Father: {fileID: 1853014160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2194,3 +2324,7 @@ SceneRoots:
   - {fileID: 1181511122}
   - {fileID: 1358855060}
   - {fileID: 563341471}
+  - {fileID: 1853014160}
+  - {fileID: 1863835429}
+  - {fileID: 1524806514}
+  - {fileID: 1488273118}

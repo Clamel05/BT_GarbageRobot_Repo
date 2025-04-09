@@ -9,12 +9,14 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public GameObject laser;
 
-		//public BBParameter<Transform> target;
+        public float chargeTimer;
+
+		private float time;
 
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -24,19 +26,27 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 
 			MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
-			
-			EndAction(true);
-		}
+            time = chargeTimer;
+
+
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
-		}
+            
+
+            time -= Time.deltaTime;
+            if (time <= 0)
+            {
+				//MonoBehaviour.Destroy(laser);
+                EndAction(true);
+            }
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-			
-		}
+
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {

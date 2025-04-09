@@ -27,7 +27,7 @@ namespace NodeCanvas.Tasks.Actions {
 			maxTimer -= Time.deltaTime;
 			if(maxTimer <= 0)
 			{
-				EndAction(true);
+				EndAction(false);
 			}
 		}
 
