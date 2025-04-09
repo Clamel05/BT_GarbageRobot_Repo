@@ -1,5 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
+using ParadoxNotion.Serialization.FullSerializer;
 using UnityEngine;
 
 
@@ -53,7 +54,13 @@ namespace NodeCanvas.Tasks.Actions {
 			{
 				Debug.Log("hit");
 
-				//MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
+				Quaternion newRotation = agent.transform.rotation;
+				//Vector3 euler = new Vector3(agent.transform.rotation.x, agent.transform.rotation.y + 90, agent.transform.rotation.z);
+				//newRotation.eulerAngles = euler;
+				//newRotation.y += 90;
+				Debug.Log(newRotation.eulerAngles);
+
+				MonoBehaviour.Instantiate(laser, agent.transform.position, newRotation);
 
 				EndAction(true);
 			}
