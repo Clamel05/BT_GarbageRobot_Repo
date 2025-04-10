@@ -10,6 +10,8 @@ namespace NodeCanvas.Tasks.Actions
 
         public BBParameter<Vector3> velocity;
         public BBParameter<Vector3> acceleration;
+        
+        
         public float maxGroundSpeed;
 
         public BBParameter<Transform> target;
@@ -32,7 +34,7 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
-            maxGroundSpeed = 20;
+            //maxGroundSpeed = 20;
         }
 
         //Called once per frame while the action is active.

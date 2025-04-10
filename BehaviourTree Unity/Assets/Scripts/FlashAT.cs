@@ -72,7 +72,7 @@ namespace NodeCanvas.Tasks.Actions {
             timer += Time.deltaTime;
             if (timer >= chargeTime)
 			{
-                EndAction(true);
+                EndAction(false);
             }
 			
 		}
