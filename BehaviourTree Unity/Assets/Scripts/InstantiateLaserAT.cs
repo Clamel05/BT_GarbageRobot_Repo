@@ -9,6 +9,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public GameObject laser;
 
+		private GameObject spawnedLaser;
+
         public float chargeTimer;
 
 		private float time;
@@ -25,7 +27,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 
-			MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
+			spawnedLaser = MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
             time = chargeTimer;
 
 
@@ -38,7 +40,7 @@ namespace NodeCanvas.Tasks.Actions {
             time -= Time.deltaTime;
             if (time <= 0)
             {
-				//MonoBehaviour.Destroy(laser);
+				MonoBehaviour.DestroyImmediate(spawnedLaser, true);
                 EndAction(true);
             }
         }
