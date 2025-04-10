@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2164722174395266227}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Laser Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6808799628460955744}
   - component: {fileID: 3324570073356768850}
   - component: {fileID: 4513984514418803283}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Laser Charge Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

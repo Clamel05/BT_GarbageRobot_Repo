@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
 
     public float playerSpeed;
 
+    public LayerMask laserLayerMask;
+    int collidersFound;
+
+    Collider[] collidersInsideOverlap = new Collider[1];
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +27,14 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move(move * Time.deltaTime * playerSpeed);
 
+
+        LaserHit();
+    }
+
+    void LaserHit()
+    {
+
+        collidersFound = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale, collidersInsideOverlap, Quaternion.identity, laserLayerMask);
 
 
     }
