@@ -7,14 +7,17 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class NavigateDashAT : ActionTask {
 
-        public BBParameter<Vector3> velocity;
-        public BBParameter<Vector3> acceleration;
+        public BBParameter<SteeringData> steeringData;
+        
 
 
         public float maxDashSpeed;
 
         public BBParameter<Transform> target;
         public float stoppingDistance;
+
+        public float maxDashTimer;
+        private float dashTime;
 
 
         //private bool pause = false;
@@ -31,32 +34,33 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-
+            dashTime = maxDashTimer;
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 
 
+            steeringData.value.velocity += steeringData.value.acceleration;
+            float groundSpeed = Mathf.Sqrt(steeringData.value.velocity.x * steeringData.value.velocity.x + steeringData.value.velocity.z * steeringData.value.velocity.z);
+            if (maxDashSpeed < groundSpeed)
+            {
+                float cappedX = steeringData.value.velocity.x / groundSpeed * maxDashSpeed;
+                float cappedZ = steeringData.value.velocity.z / groundSpeed * maxDashSpeed;
+                steeringData.value.velocity = new Vector3(cappedX, steeringData.value.velocity.y, cappedZ);
+            }
+            agent.transform.position += steeringData.value.velocity * Time.deltaTime;
+
+            steeringData.value.acceleration = Vector3.zero;
 
 
-
-                velocity.value += acceleration.value;
-                float groundSpeed = Mathf.Sqrt(velocity.value.x * velocity.value.x + velocity.value.z * velocity.value.z);
-                if (maxDashSpeed < groundSpeed)
-                {
-                    float cappedX = velocity.value.x / groundSpeed * maxDashSpeed;
-                    float cappedZ = velocity.value.z / groundSpeed * maxDashSpeed;
-                    velocity = new Vector3(cappedX, velocity.value.y, cappedZ);
-                }
-                agent.transform.position += velocity.value * Time.deltaTime;
-
-                acceleration.value = Vector3.zero;
 
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
-            if (distanceToTarget < stoppingDistance)
+
+            dashTime -= Time.deltaTime;
+            if (distanceToTarget<stoppingDistance)
             {
-                EndAction(false);
+                EndAction(true);
                 return;
             }
 

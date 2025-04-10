@@ -8,14 +8,12 @@ namespace NodeCanvas.Tasks.Actions
     public class NavigateAT : ActionTask
     {
 
-        public BBParameter<Vector3> velocity;
-        public BBParameter<Vector3> acceleration;
-        
+
+        public BBParameter<SteeringData> steeringData;
         
         public float maxGroundSpeed;
 
         public BBParameter<Transform> target;
-        public BBParameter<float> stoppingDistance;
 
 
         private bool pause = false;
@@ -49,27 +47,27 @@ namespace NodeCanvas.Tasks.Actions
                     pause = false;
 
                 pauseTimer = 0;
-               acceleration.value = Vector3.zero;
+               steeringData.value.acceleration = Vector3.zero;
             }
 
 
             if(pause == false)
             {
-                velocity.value += acceleration.value;
-                float groundSpeed = Mathf.Sqrt(velocity.value.x * velocity.value.x + velocity.value.z * velocity.value.z);
+                steeringData.value.velocity += steeringData.value.acceleration;
+                float groundSpeed = Mathf.Sqrt(steeringData.value.velocity.x + steeringData.value.velocity.z);
                 if (maxGroundSpeed < groundSpeed)
                 {
-                    float cappedX = velocity.value.x / groundSpeed * maxGroundSpeed;
-                    float cappedZ = velocity.value.z / groundSpeed * maxGroundSpeed;
-                    velocity = new Vector3(cappedX, velocity.value.y, cappedZ);
+                    float cappedX = steeringData.value.velocity.x / groundSpeed * maxGroundSpeed;
+                    float cappedZ = steeringData.value.velocity.z / groundSpeed * maxGroundSpeed;
+                    steeringData.value.velocity = new Vector3(cappedX, steeringData.value.velocity.y, cappedZ);
                 }
-                agent.transform.position += velocity.value * Time.deltaTime;
+                agent.transform.position += steeringData.value.velocity * Time.deltaTime;
 
-                acceleration.value = Vector3.zero;
+                steeringData.value.acceleration = Vector3.zero;
             }
 
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
-            if (distanceToTarget < stoppingDistance.value)
+            if (distanceToTarget < steeringData.value.stopDistance)
             {
                 EndAction(true);
                 return;

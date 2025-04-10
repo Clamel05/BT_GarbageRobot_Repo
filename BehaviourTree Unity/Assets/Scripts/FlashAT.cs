@@ -20,7 +20,7 @@ namespace NodeCanvas.Tasks.Actions {
 		private bool turnBlue;
 		private bool turnWhite = false;
 
-		public BBParameter <float> chargeSpeed;
+		//public float chargeSpeed;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -34,7 +34,6 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
             meshRenderer.material.color = flashColour;
 
-			chargeSpeed.value = 2;
             
         }
 

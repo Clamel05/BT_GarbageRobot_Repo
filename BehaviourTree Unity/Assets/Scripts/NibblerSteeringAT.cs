@@ -7,9 +7,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class NibblerSteeringAT : ActionTask {
 
-        public BBParameter<Vector3> acceleration;
+        public BBParameter<SteeringData> steeringData;
+
         public BBParameter<Transform> target;
-        public BBParameter<float> stoppingDistance;
+
         public float steeringAcceleration;
 
         //Use for initialization. This is called only once in the lifetime of the task.
@@ -25,14 +26,14 @@ namespace NodeCanvas.Tasks.Actions {
         protected override void OnExecute()
         {
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
-            if (distanceToTarget < stoppingDistance.value)
+            if (distanceToTarget < steeringData.value.stopDistance)
             {
                 EndAction(true);
                 return;
             }
             Vector3 direction = target.value.position - agent.transform.position;
             direction = new Vector3(direction.x, 0f, direction.z);
-            acceleration.value += direction.normalized * steeringAcceleration * Time.deltaTime;
+            steeringData.value.acceleration += direction.normalized * steeringAcceleration * Time.deltaTime;
             EndAction(true);
         }
 
