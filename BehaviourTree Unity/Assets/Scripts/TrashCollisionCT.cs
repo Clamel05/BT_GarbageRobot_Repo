@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions {
 
-	public class LaserCollisionCT : ConditionTask {
+	public class TrashCollisionCT : ConditionTask {
 
         public LayerMask laserLayer;
         int collidersFound;
@@ -33,8 +33,6 @@ namespace NodeCanvas.Tasks.Conditions {
 		protected override bool OnCheck() {
             //Overlap box to test if the player collides with the laser
             collidersFound = Physics.OverlapBoxNonAlloc(agent.transform.position, agent.transform.localScale, collidersInsideOverlap, Quaternion.identity, laserLayer);
-
-			Debug.Log("laser hit");
 
             //Returns when the player has collided with the laser
             return collidersFound > 0;

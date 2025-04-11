@@ -25,6 +25,7 @@ namespace NodeCanvas.Tasks.Actions {
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            //move to the target
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
             if (distanceToTarget < steeringData.value.stopDistance)
             {

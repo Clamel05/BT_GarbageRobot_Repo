@@ -26,7 +26,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-
+			//Spawns the laser charge-up object
 			spawnedLaser = MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
             time = chargeTimer;
 
@@ -36,10 +36,11 @@ namespace NodeCanvas.Tasks.Actions {
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
             
-
+			//timer for how long it's active for
             time -= Time.deltaTime;
             if (time <= 0)
             {
+				//destroys the object when it's done
 				MonoBehaviour.DestroyImmediate(spawnedLaser, true);
                 EndAction(true);
             }

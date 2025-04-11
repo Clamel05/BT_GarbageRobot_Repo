@@ -33,24 +33,12 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
             meshRenderer.material.color = flashColour;
-
-            
         }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
 
-			/*flashTimer = maxFlashTimer;
-			flashTimer -= Time.deltaTime;
-			if(flashTimer == 0 )
-			{
-				if (turnWhite == false)
-                    turnWhite = true;
-                else
-                    turnWhite = false;
-            }*/
-
+            //Sets the character to quickly flash between colours
             if (turnWhite == false)
                 turnWhite = true;
             else
@@ -63,11 +51,7 @@ namespace NodeCanvas.Tasks.Actions {
             else
                 meshRenderer.material.color = baseColour;
 
-
-
-
-
-
+            //Amount of time flashing
             timer += Time.deltaTime;
             if (timer >= chargeTime)
 			{
@@ -78,6 +62,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
+            //Sets back to the regular colour
             meshRenderer.material.color = baseColour;
         }
 

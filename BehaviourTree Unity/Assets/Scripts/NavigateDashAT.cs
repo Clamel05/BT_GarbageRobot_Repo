@@ -7,9 +7,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class NavigateDashAT : ActionTask {
 
-        public BBParameter<SteeringData> steeringData;
-        
-
+        public BBParameter<SteeringData> steeringData;       
 
         public float maxDashSpeed;
 
@@ -34,13 +32,13 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            dashTime = maxDashTimer;
+            //dashTime = maxDashTimer;
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 
-
+            //Movement
             steeringData.value.velocity += steeringData.value.acceleration;
             float groundSpeed = Mathf.Sqrt(steeringData.value.velocity.x * steeringData.value.velocity.x + steeringData.value.velocity.z * steeringData.value.velocity.z);
             if (maxDashSpeed < groundSpeed)
@@ -53,11 +51,10 @@ namespace NodeCanvas.Tasks.Actions {
 
             steeringData.value.acceleration = Vector3.zero;
 
-
+            //dashTime -= Time.deltaTime;
 
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
-
-            dashTime -= Time.deltaTime;
+            //If within a distance, end action
             if (distanceToTarget<stoppingDistance)
             {
                 EndAction(true);

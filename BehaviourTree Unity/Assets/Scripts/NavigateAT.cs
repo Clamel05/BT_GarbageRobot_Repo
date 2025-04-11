@@ -7,8 +7,6 @@ namespace NodeCanvas.Tasks.Actions
 
     public class NavigateAT : ActionTask
     {
-
-
         public BBParameter<SteeringData> steeringData;
         
         public float maxGroundSpeed;
@@ -38,6 +36,7 @@ namespace NodeCanvas.Tasks.Actions
         //Called once per frame while the action is active.
         protected override void OnUpdate()
         {
+            //timer to pause and unpause movement
             pauseTimer += Time.deltaTime;
             if(pauseTimer >= maxPauseTimer)
             {
@@ -50,7 +49,7 @@ namespace NodeCanvas.Tasks.Actions
                steeringData.value.acceleration = Vector3.zero;
             }
 
-
+            //if it is not paused, move
             if(pause == false)
             {
                 steeringData.value.velocity += steeringData.value.acceleration;
@@ -62,10 +61,11 @@ namespace NodeCanvas.Tasks.Actions
                     steeringData.value.velocity = new Vector3(cappedX, steeringData.value.velocity.y, cappedZ);
                 }
                 agent.transform.position += steeringData.value.velocity * Time.deltaTime;
-
+                
                 steeringData.value.acceleration = Vector3.zero;
             }
 
+            //If in range of target (trash), endaction
             float distanceToTarget = Vector3.Distance(agent.transform.position, target.value.position);
             if (distanceToTarget < steeringData.value.stopDistance)
             {

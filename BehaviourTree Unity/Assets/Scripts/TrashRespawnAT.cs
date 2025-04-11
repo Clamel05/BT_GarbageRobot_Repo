@@ -1,23 +1,18 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 
 namespace NodeCanvas.Tasks.Actions {
 
-	public class ShooterSpawnAT : ActionTask {
+	public class TrashRespawnAT : ActionTask {
 
-		private int randomSpawn;
+        private int randomSpawn;
 
-		//Respawn positions
-		public GameObject spawner01;
+        public GameObject spawner01;
         public GameObject spawner02;
         public GameObject spawner03;
         public GameObject spawner04;
-
-		private float rotationY;
-
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -29,40 +24,28 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+            randomSpawn = Random.Range(1, 4);
 
-			//random rotation
-			rotationY = Random.Range(0, 360);
-
-			//random spawn
-			randomSpawn = Random.Range(1, 4);
-
-
-			if(randomSpawn == 1)
-			{
-				//sets a random spawnpoint based off the random nnumber chosen
-				agent.transform.position = spawner01.transform.position;
-                agent.transform.Rotate(0, rotationY, 0, Space.Self);
-				//Sets a random rotation on the y value
+            if (randomSpawn == 1)
+            {
+                agent.transform.position = spawner01.transform.position;
             }
-			else if(randomSpawn == 2)
+            else if (randomSpawn == 2)
             {
                 agent.transform.position = spawner02.transform.position;
-                agent.transform.Rotate(0, rotationY, 0, Space.Self);
             }
             else if (randomSpawn == 3)
             {
                 agent.transform.position = spawner03.transform.position;
-                agent.transform.Rotate(0, rotationY, 0, Space.Self);
             }
-			else
-			{
+            else
+            {
                 agent.transform.position = spawner04.transform.position;
-                agent.transform.Rotate(0, rotationY, 0, Space.Self);
 
             }
 
             EndAction(true);
-		}
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {

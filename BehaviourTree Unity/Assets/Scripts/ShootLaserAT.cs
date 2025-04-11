@@ -46,6 +46,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		protected override void OnExecute() {
 
+            //instantiates the real laser
             spawnedLaser = MonoBehaviour.Instantiate(laser, agent.transform.position, agent.transform.rotation);
 
             time = shootTimer;
@@ -59,11 +60,10 @@ namespace NodeCanvas.Tasks.Actions {
 
             Vector3 forward = agent.transform.TransformDirection(Vector3.forward);
 
-
             //If the laser hits the player
             if (Physics.Raycast(agent.transform.position, forward, raycastRange, playerMask))
             {
-                Debug.Log("Dead");
+                //Debug.Log("Dead");
                 Application.Quit(); //Ends the game when in build mode
                 UnityEditor.EditorApplication.isPlaying = false; // Ends the game when in the editor play mode
 
@@ -77,16 +77,12 @@ namespace NodeCanvas.Tasks.Actions {
             {
 
                 nibblerHit = hit.transform.gameObject;
-
-                //nibblerHit.transform.position -= new Vector3(0,+20,0);
-
-
-                //spawnTime -= Time.deltaTime;
-                //if(spawnTime < 0)
                 
+                //gets a random spawner the nibbler will respawn at
                     randomSpawn = Random.Range(1, 4);
-                    Debug.Log("random respawn value set");
+                    //Debug.Log("random respawn value set");
 
+                //sets the spawner by the random number which is chosen
                     if (randomSpawn == 1)
                     {
                         nibblerHit.transform.position = spawner01.transform.position;
@@ -107,10 +103,11 @@ namespace NodeCanvas.Tasks.Actions {
             }
 
 
-
+            //Ends when the timer is finsihed
             time -= Time.deltaTime;
             if (time <= 0)
             {
+                //destroys the laser when finished
                 MonoBehaviour.DestroyImmediate(spawnedLaser, true);
                 EndAction(false);
             }
